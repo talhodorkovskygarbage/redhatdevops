@@ -1,7 +1,6 @@
 kind: Deployment
 apiVersion: apps/v1
 metadata:
-# set your lab user name
   name: user3-hello-world
 spec:
   replicas: 3
@@ -21,7 +20,7 @@ spec:
             - containerPort: 8080
               protocol: TCP
           imagePullPolicy: IfNotPresent
-          image: 'quay.io/user3/image:v1'
+          image: 'quay.io/talhodor128/image:v1'
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
   strategy:
