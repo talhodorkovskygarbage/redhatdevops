@@ -25,20 +25,23 @@ spec:
           - name: index-html
             mountPath: /tmp/html
           readinessProbe:
-            path: /health/readiness
-            initialDelaySeconds: 1
+            httpGet:
+              path: /health/readiness # this check the application url path
+              port: {{ .Values.containers.containerPort  }} # In which port the Application is listening
+              scheme: HTTP            initialDelaySeconds: 1
             timeoutSeconds: 1 # the time for timeout
             periodSeconds: 10 # the abount of time to wait between checks
             successThreshold: 1 # count to decalre seccessfull 
             failureThreshold: 3 # count to decalre failure
           livenessProbe:
-            path: /health/liveness
-            initialDelaySeconds: 1
+            httpGet:
+              path: /health/readiness # this check the application url path
+              port: {{ .Values.containers.containerPort  }} # In which port the Application is listening
+              scheme: HTTP            initialDelaySeconds: 1
             timeoutSeconds: 1 # the time for timeout
             periodSeconds: 10 # the abount of time to wait between checks
             successThreshold: 1 # count to decalre seccessfull 
             failureThreshold: 3 # count to decalre failure
-
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
   strategy:
