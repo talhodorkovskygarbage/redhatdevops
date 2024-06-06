@@ -5,5 +5,12 @@ containers:
   image: 'quay.io/talhodor128/image'
   tag: 'chart_v1'
 
+probes:
+  initialDelaySeconds: 1
+  timeoutSeconds: 10
+  periodSeconds: 3
+  successThreshold: 1 
+  failureThreshold: 3
+
 service:
   servicePort: 8080
