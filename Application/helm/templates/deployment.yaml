@@ -46,7 +46,7 @@ spec:
               port: {{ .Values.containers.containerPort }}
               scheme: HTTP
             initialDelaySeconds: {{ .Values.probes.initialDelaySeconds }} # the time is waiting befor testing the application path
-            timeoutSeconds: {{ .Values.provvgggbes.timeoutSeconds }} # the time for timeout
+            timeoutSeconds: {{ .Values.probes.timeoutSeconds }} # the time for timeout
             periodSeconds: {{ .Values.probes.periodSeconds }} # the abount of time to wait between checks
             successThreshold: {{ .Values.probes.successThreshold }} # count to decalre seccessfull 
             failureThreshold: {{ .Values.probes.failureThreshold }} # count to decalre failure 
