@@ -12,5 +12,9 @@ probes:
   successThreshold: 1 
   failureThreshold: 3
 
+volume:
+  name: index-html
+  mountPath: /tmp/html
+
 service:
   servicePort: 8080
