@@ -14,7 +14,7 @@ probes:
 
 volume:
   name: index-html
-  mountPath: /tmp/html
+  path: /tmp/html
 
 service:
   servicePort: 8080

@@ -11,6 +11,8 @@ spec:
     metadata:
       labels:
         app: {{ .Chart.Name }}
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/ConfigMap.yaml") . | sha256sum }}
     spec:
       volumes:
         - name: index-html
@@ -29,7 +31,7 @@ spec:
           image: {{ .Values.containers.image }}:{{ .Values.containers.tag }}
           volumeMounts:
           - name: {{ .Values.volume.name }} 
-            mountPath: {{ .Values.volume.mountPath }} 
+            mountPath: {{ .Values.volume.path }} 
           readinessProbe:
             httpGet:
               path: /health/readiness # this check the application url path
