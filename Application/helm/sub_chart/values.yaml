@@ -1,10 +1,10 @@
-deploy1: 
+deploy2: 
   ReplicaNumber: 1
 
   containers:
       containerPort: 8080
       image: 'quay.io/talhodor128/image'
-      tag: 'chart_v1'
+      tag: 'chart_v2'
 
   service:
       servicePort: 8080
