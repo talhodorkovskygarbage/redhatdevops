@@ -21,7 +21,29 @@ spec:
               protocol: TCP
           imagePullPolicy: IfNotPresent
           image: 'quay.io/talhodor128/image:v2'
-          
+          volumeMounts:
+          - name: index-html
+            mountPath: /tmp/html
+          readinessProbe:
+            httpGet:
+              path: /health/readiness # this check the application url path
+              port: 8080 # In which port the Application is listening
+              scheme: HTTP            
+            initialDelaySeconds: 1
+            timeoutSeconds: 1 # the time for timeout
+            periodSeconds: 10 # the abount of time to wait between checks
+            successThreshold: 1 # count to decalre seccessfull 
+            failureThreshold: 3 # count to decalre failure
+          livenessProbe:
+            httpGet:
+              path: /health/readiness # this check the application url path
+              port: 8080 # In which port the Application is listening
+              scheme: HTTP            
+            initialDelaySeconds: 1
+            timeoutSeconds: 1 # the time for timeout
+            periodSeconds: 10 # the abount of time to wait between checks
+            successThreshold: 1 # count to decalre seccessfull 
+            failureThreshold: 3 # count to decalre failure
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
   strategy:
