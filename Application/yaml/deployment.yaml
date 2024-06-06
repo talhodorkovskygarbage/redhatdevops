@@ -22,7 +22,7 @@ spec:
           imagePullPolicy: IfNotPresent
           image: 'quay.io/talhodor128/image:v2'
           volumeMounts:
-          - name: index-html
+          - name: src/index-html
             mountPath: /tmp/html
           readinessProbe:
             httpGet:
